@@ -1,0 +1,13 @@
+h2 {
+    color: #2196f3;
+    padding-bottom: 10px;
+}
+
+.cart {
+    text-align: right;
+    background: #FFFFFF;
+    min-height: 300px;
+    padding: 1.5em;
+    margin: 1em 0;
+    box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.07)
+}
