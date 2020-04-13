@@ -9,9 +9,10 @@ class App extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = { products: [], cartItems: [] }
+    this.state = { products: [], cartItems: [] , inputUser: ''}
     this.handleAddToCart = this.handleAddToCart.bind(this)
     this.handleRemove = this.handleRemove.bind(this)
+
   }
 
   componentWillMount() {
@@ -54,6 +55,13 @@ class App extends React.Component {
     })
   }
 
+
+  inputChangeHandler =(event) => {
+    this.setState({inputUser: event.target.value})
+  }
+
+  
+
   render() {
     return (
       <div className="container-fluid">
@@ -71,6 +79,14 @@ class App extends React.Component {
              />
           </div>
         </div>
+
+      <input 
+        type = "text"
+        onChange = {this.inputChangeHandler}
+        value = {this.state.inputUser}
+      />
+      <p>{this.state.inputUser}</p>
+
       </div>
     )
   }
