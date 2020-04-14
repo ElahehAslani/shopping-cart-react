@@ -5,6 +5,9 @@ import './components/Products.css'
 import Cart from './components/Cart'
 import './components/Cart.css'
 
+import Validation from './components/Validation'
+import Char from './components/Char'
+
 class App extends React.Component {
 
   constructor(props) {
@@ -60,9 +63,23 @@ class App extends React.Component {
     this.setState({inputUser: event.target.value})
   }
 
-  
+  deleteChangeHandler = (index) => {
+    const text = this.state.inputUser.split('');
+    text.splice(index, 1);
+    const updatedText = text.join('');
+    this.setState({inputUser : updatedText});
+  }
 
   render() {
+
+    const charList = this.state.inputUser.split('').map((char, index) => {
+      return<Char 
+            character = {char} 
+            key = {index}
+            clicked = {() => this.deleteChangeHandler(index) }/>
+    });
+
+
     return (
       <div className="container-fluid">
         <div className="row">
@@ -86,7 +103,8 @@ class App extends React.Component {
         value = {this.state.inputUser}
       />
       <p>{this.state.inputUser}</p>
-
+      <Validation inputLength={this.state.inputUser.length}/>
+      {charList}
       </div>
     )
   }
